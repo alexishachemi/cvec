@@ -1,0 +1,7 @@
+*.gc*
+*.o
+*cvec*
+!cvec*.h
+unit_tests
+tmp/
+.vscode/
