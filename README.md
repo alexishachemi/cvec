@@ -51,3 +51,14 @@ For more information about how to use the library, see the [example file](exampl
 ```sh
 make example
 ```
+
+## Development
+
+You can then compile and/or run the unit tests using the following commands:
+
+```sh
+make unit_tests
+```
+```sh
+make tests_run
+```
