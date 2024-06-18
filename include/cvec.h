@@ -32,5 +32,5 @@ void *vec_safe_at(vec_t *vec, ssize_t i);
 
 // size
 size_t vec_size(vec_t *vec);
-bool vec_resize_fast(vec_t *vec, size_t size);
+bool vec_fast_resize(vec_t *vec, size_t size);
 bool vec_resize(vec_t *vec, size_t size);

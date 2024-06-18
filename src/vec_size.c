@@ -26,7 +26,7 @@ static bool realloc_vec(vec_t *vec, size_t size)
     return vec->data;
 }
 
-bool vec_resize_fast(vec_t *vec, size_t size)
+bool vec_fast_resize(vec_t *vec, size_t size)
 {
     VEC_ASSERT_NO_DC(vec, false);
     if (!realloc_vec(vec, size))
