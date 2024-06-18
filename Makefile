@@ -25,9 +25,13 @@ SRC		=	$(shell find src -type f -name '*.c')
 
 TSRC	=	$(shell find tests -type f -name '*.c')
 
+ESRC	=	$(shell find example -type f -name '*.c')
+
 OBJ		=	$(SRC:%.c=$(TMPDIR)/%.o)
 
 TOBJ	=	$(TSRC:%.c=$(TMPDIR)/%.o)
+
+EOBJ	=	$(ESRC:%.c=$(TMPDIR)/%.o)
 
 # flags
 
@@ -56,11 +60,11 @@ reinstall: uninstall install
 
 clean:
 	rm -rf $(TMPDIR)
-	rm -rf $(shell find . -type f -name '*.gc*')
 
 fclean: clean
 	rm -f $(LIB)
 	rm -f unit_tests
+	rm -f $(NAME)
 
 re: fclean all
 
@@ -71,8 +75,12 @@ unit_tests:	$(LIB) $(TOBJ)
 tests_run: unit_tests
 	./unit_tests
 
+example:	$(LIB) $(EOBJ)
+	$(CC) -o $(NAME) $(EOBJ) $(LIB) $(CFLAGS)
+
 $(TMPDIR)/%.o:	%.c
 	@mkdir -p $(@D)
-	gcc -o $@ -c $< $(CFLAGS) $(LDFLAGS)
+	gcc -o $@ -c $< $(CFLAGS)
 
-.PHONY: all install uninstall reinstall clean fclean re unit_tests tests_run
+.PHONY: all install uninstall reinstall clean fclean re unit_tests tests_run\
+	example
