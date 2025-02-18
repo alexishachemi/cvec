@@ -1,22 +1,24 @@
 #include <criterion/criterion.h>
-#include "cvec_dev.h"
 
-Test(vec_is_valid, null_vec)
+#define CVEC_IMPLEMENTATION
+#include "cvec.h"
+
+Test(cvec_is_valid, null_vec)
 {
-    cr_assert_eq(vec_is_valid(NULL, false), false);
+    cr_assert_eq(_cvec_is_valid(NULL, false), false);
 }
 
-Test(vec_is_valid, null_data)
+Test(cvec_is_valid, null_data)
 {
-    vec_t vec = vec_create(sizeof(int));
+    cvec_t vec = cvec_create(sizeof(int));
 
-    cr_assert_eq(vec_is_valid(&vec, true), false);
-    cr_assert_eq(vec_is_valid(&vec, false), true);
+    cr_assert_eq(_cvec_is_valid(&vec, true), false);
+    cr_assert_eq(_cvec_is_valid(&vec, false), true);
 }
 
-Test(vec_is_valid, zero_elem_size)
+Test(cvec_is_valid, zero_elem_size)
 {
-    vec_t vec = vec_create(0);
+    cvec_t vec = cvec_create(0);
 
-    cr_assert_eq(vec_is_valid(&vec, false), false);
+    cr_assert_eq(_cvec_is_valid(&vec, false), false);
 }

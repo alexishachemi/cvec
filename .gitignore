@@ -5,3 +5,5 @@
 unit_tests
 tmp/
 .vscode/
+.cache/
+compile_commands.json
